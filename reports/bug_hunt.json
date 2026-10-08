@@ -3,7 +3,7 @@
     "run": "clean",
     "bugs": "none",
     "exit_code": 0,
-    "duration_s": 10.5,
+    "duration_s": 6.6,
     "total": 68,
     "passed": 68,
     "failed": 0,
@@ -15,7 +15,7 @@
     "run": "PIPE-01",
     "bugs": "PIPE-01",
     "exit_code": 1,
-    "duration_s": 10.4,
+    "duration_s": 6.1,
     "total": 68,
     "passed": 61,
     "failed": 7,
@@ -25,14 +25,14 @@
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert (2, Decimal('500.00')) == (1, Decimal('250.00'))\n  \n  At index 0 diff: 2 != 1\n  Use -v to get more diff"
+        "message": "AssertionError: assert (2, Decimal('500.00')) == (1, Decimal('250.00'))\n  \n  At index 0 diff: 2 != 1\n  \n  Full diff:\n    (\n  -     1,\n  ?     ^\n  +     2,\n  ?     ^\n  -     Decimal('250.00'),\n  ?     "
       },
       {
         "name": "test_dirty_extract_reconciles[valid_rows_loaded_once]",
         "module": "test_reconciliation",
         "layer": "Reconciliation",
         "status": "failed",
-        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 0 missing, 0 unexpected, 150 duplicated. [{'issue': 'duplicated', 'txn_id': 'T00034764', 'c"
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 0 missing, 0 unexpected, 150 duplicated. [{'issue': 'duplicated', 'txn_id': 'T00040958', 'c"
       },
       {
         "name": "test_dirty_extract_reconciles[quarantine_matches_rules]",
@@ -80,7 +80,7 @@
     "run": "PIPE-02",
     "bugs": "PIPE-02",
     "exit_code": 1,
-    "duration_s": 9.9,
+    "duration_s": 5.9,
     "total": 68,
     "passed": 59,
     "failed": 9,
@@ -159,7 +159,7 @@
     "run": "PIPE-03",
     "bugs": "PIPE-03",
     "exit_code": 1,
-    "duration_s": 9.8,
+    "duration_s": 6.1,
     "total": 68,
     "passed": 59,
     "failed": 9,
@@ -238,7 +238,7 @@
     "run": "PIPE-04",
     "bugs": "PIPE-04",
     "exit_code": 1,
-    "duration_s": 10.1,
+    "duration_s": 5.9,
     "total": 68,
     "passed": 61,
     "failed": 7,
@@ -248,7 +248,7 @@
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert [] == [('2026-09-05...imal('0.00'))]\n  \n  Right contains one more item: ('2026-09-05', 'ARYB9999', 1, Decimal('300.00'), Decimal('0.00'))\n  Use -v to get more diff"
+        "message": "AssertionError: assert [] == [('2026-09-05...imal('0.00'))]\n  \n  Right contains one more item: ('2026-09-05', 'ARYB9999', 1, Decimal('300.00'), Decimal('0.00'))\n  \n  Full diff:\n  + []\n  - [\n  -     (\n"
       },
       {
         "name": "test_dirty_extract_reconciles[row_accounting]",
@@ -262,7 +262,7 @@
         "module": "test_reconciliation",
         "layer": "Reconciliation",
         "status": "failed",
-        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 0 duplicated. [{'issue': 'missing', 'txn_id': 'T00034995'}, {'is"
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 0 duplicated. [{'issue': 'missing', 'txn_id': 'T00007731'}, {'is"
       },
       {
         "name": "test_dirty_extract_reconciles[daily_control_totals]",
@@ -303,7 +303,7 @@
     "run": "PIPE-05",
     "bugs": "PIPE-05",
     "exit_code": 1,
-    "duration_s": 10.1,
+    "duration_s": 6.2,
     "total": 68,
     "passed": 59,
     "failed": 9,
@@ -313,7 +313,7 @@
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert (3, Decimal('1700.00')) == (1, Decimal('100.00'))\n  \n  At index 0 diff: 3 != 1\n  Use -v to get more diff"
+        "message": "AssertionError: assert (3, Decimal('1700.00')) == (1, Decimal('100.00'))\n  \n  At index 0 diff: 3 != 1\n  \n  Full diff:\n    (\n  -     1,\n  ?     ^\n  +     3,\n  ?     ^\n  -     Decimal('100.00'),\n  +    "
       },
       {
         "name": "test_dirty_extract_reconciles[daily_control_totals]",
@@ -382,7 +382,7 @@
     "run": "PIPE-06",
     "bugs": "PIPE-06",
     "exit_code": 1,
-    "duration_s": 10.0,
+    "duration_s": 6.0,
     "total": 68,
     "passed": 59,
     "failed": 9,
@@ -392,7 +392,7 @@
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert (Decimal('100...cimal('0.00')) == (Decimal('100...cimal('0.99'))\n  \n  At index 0 diff: Decimal('100.00') != Decimal('100.75')\n  Use -v to get more diff"
+        "message": "AssertionError: assert (Decimal('100...cimal('0.00')) == (Decimal('100...cimal('0.99'))\n  \n  At index 0 diff: Decimal('100.00') != Decimal('100.75')\n  \n  Full diff:\n    (\n  -     Decimal('100.75'),\n  "
       },
       {
         "name": "test_dirty_extract_reconciles[daily_control_totals]",
@@ -461,7 +461,7 @@
     "run": "all",
     "bugs": "all",
     "exit_code": 1,
-    "duration_s": 10.2,
+    "duration_s": 6.2,
     "total": 68,
     "passed": 51,
     "failed": 17,
@@ -485,28 +485,28 @@
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert (2, Decimal('500.00')) == (1, Decimal('250.00'))\n  \n  At index 0 diff: 2 != 1\n  Use -v to get more diff"
+        "message": "AssertionError: assert (2, Decimal('500.00')) == (1, Decimal('250.00'))\n  \n  At index 0 diff: 2 != 1\n  \n  Full diff:\n    (\n  -     1,\n  ?     ^\n  +     2,\n  ?     ^\n  -     Decimal('250.00'),\n  ?     "
       },
       {
         "name": "test_failed_and_reversed_payments_are_not_money",
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert (3, Decimal('1700.00')) == (1, Decimal('100.00'))\n  \n  At index 0 diff: 3 != 1\n  Use -v to get more diff"
+        "message": "AssertionError: assert (3, Decimal('1700.00')) == (1, Decimal('100.00'))\n  \n  At index 0 diff: 3 != 1\n  \n  Full diff:\n    (\n  -     1,\n  ?     ^\n  +     3,\n  ?     ^\n  -     Decimal('100.00'),\n  +    "
       },
       {
         "name": "test_paise_are_kept",
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert (Decimal('100...cimal('0.00')) == (Decimal('100...cimal('0.99'))\n  \n  At index 0 diff: Decimal('100.00') != Decimal('100.75')\n  Use -v to get more diff"
+        "message": "AssertionError: assert (Decimal('100...cimal('0.00')) == (Decimal('100...cimal('0.99'))\n  \n  At index 0 diff: Decimal('100.00') != Decimal('100.75')\n  \n  Full diff:\n    (\n  -     Decimal('100.75'),\n  "
       },
       {
         "name": "test_unknown_branch_is_kept_not_dropped",
         "module": "test_pipeline_units",
         "layer": "Unit",
         "status": "failed",
-        "message": "AssertionError: assert [] == [('2026-09-05...imal('0.00'))]\n  \n  Right contains one more item: ('2026-09-05', 'ARYB9999', 1, Decimal('300.00'), Decimal('0.00'))\n  Use -v to get more diff"
+        "message": "AssertionError: assert [] == [('2026-09-05...imal('0.00'))]\n  \n  Right contains one more item: ('2026-09-05', 'ARYB9999', 1, Decimal('300.00'), Decimal('0.00'))\n  \n  Full diff:\n  + []\n  - [\n  -     (\n"
       },
       {
         "name": "test_dirty_extract_reconciles[row_accounting]",
@@ -520,7 +520,7 @@
         "module": "test_reconciliation",
         "layer": "Reconciliation",
         "status": "failed",
-        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 147 duplicated. [{'issue': 'missing', 'txn_id': 'T00034995'}, {'"
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 147 duplicated. [{'issue': 'missing', 'txn_id': 'T00035384'}, {'"
       },
       {
         "name": "test_dirty_extract_reconciles[quarantine_matches_rules]",
