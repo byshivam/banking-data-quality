@@ -1,0 +1,735 @@
+{
+  "generated_at": "2026-10-08T11:38:35Z",
+  "as_of": "2026-09-30",
+  "counts": {
+    "branches": 20,
+    "customers": 1000,
+    "accounts": 1366,
+    "transactions": 50285,
+    "fx_rates": 120
+  },
+  "pipeline_bugs": [],
+  "score": {
+    "overall": 98.86,
+    "dimensions": {
+      "Completeness": 96.0,
+      "Uniqueness": 99.7,
+      "Validity": 98.83,
+      "Integrity": 99.79,
+      "Timeliness": 99.96,
+      "Consistency": 98.88
+    }
+  },
+  "rules": [
+    {
+      "rule_id": "UNQ-01",
+      "dimension": "Uniqueness",
+      "table": "transactions",
+      "description": "Each txn_id appears once",
+      "records": 50285,
+      "failed": 150,
+      "pass_rate": 99.7
+    },
+    {
+      "rule_id": "CMP-01",
+      "dimension": "Completeness",
+      "table": "customers",
+      "description": "Customer has email, phone and KYC status",
+      "records": 1000,
+      "failed": 40,
+      "pass_rate": 96.0
+    },
+    {
+      "rule_id": "VAL-01",
+      "dimension": "Validity",
+      "table": "transactions",
+      "description": "Currency is INR or a currency with an FX rate",
+      "records": 50285,
+      "failed": 60,
+      "pass_rate": 99.88
+    },
+    {
+      "rule_id": "VAL-02",
+      "dimension": "Validity",
+      "table": "transactions",
+      "description": "Amount is a number greater than zero",
+      "records": 50285,
+      "failed": 30,
+      "pass_rate": 99.94
+    },
+    {
+      "rule_id": "VAL-03",
+      "dimension": "Validity",
+      "table": "customers",
+      "description": "Email is well formed",
+      "records": 1000,
+      "failed": 25,
+      "pass_rate": 97.5
+    },
+    {
+      "rule_id": "VAL-04",
+      "dimension": "Validity",
+      "table": "customers",
+      "description": "Phone is a 10-digit Indian mobile number (starts 6-9)",
+      "records": 1000,
+      "failed": 20,
+      "pass_rate": 98.0
+    },
+    {
+      "rule_id": "INT-01",
+      "dimension": "Integrity",
+      "table": "transactions",
+      "description": "Transaction belongs to a known account",
+      "records": 50285,
+      "failed": 25,
+      "pass_rate": 99.95
+    },
+    {
+      "rule_id": "INT-02",
+      "dimension": "Integrity",
+      "table": "accounts",
+      "description": "Account's branch exists in the branch master",
+      "records": 1366,
+      "failed": 5,
+      "pass_rate": 99.63
+    },
+    {
+      "rule_id": "TML-01",
+      "dimension": "Timeliness",
+      "table": "transactions",
+      "description": "Transaction is not dated after the extract cutoff",
+      "records": 50285,
+      "failed": 20,
+      "pass_rate": 99.96
+    },
+    {
+      "rule_id": "CON-01",
+      "dimension": "Consistency",
+      "table": "accounts",
+      "description": "Savings account closing balance is not negative",
+      "records": 1366,
+      "failed": 10,
+      "pass_rate": 99.27
+    },
+    {
+      "rule_id": "CON-02",
+      "dimension": "Consistency",
+      "table": "accounts",
+      "description": "Closing balance = opening + credits - debits (successful, valid transactions)",
+      "records": 1366,
+      "failed": 25,
+      "pass_rate": 98.17
+    },
+    {
+      "rule_id": "CON-03",
+      "dimension": "Consistency",
+      "table": "customers",
+      "description": "Customers under 18 cannot hold a CURRENT account",
+      "records": 1000,
+      "failed": 8,
+      "pass_rate": 99.2
+    }
+  ],
+  "grading": [
+    {
+      "rule_id": "UNQ-01",
+      "expected": 150,
+      "found": 150,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "CMP-01",
+      "expected": 40,
+      "found": 40,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "VAL-01",
+      "expected": 60,
+      "found": 60,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "VAL-02",
+      "expected": 30,
+      "found": 30,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "VAL-03",
+      "expected": 25,
+      "found": 25,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "VAL-04",
+      "expected": 20,
+      "found": 20,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "INT-01",
+      "expected": 25,
+      "found": 25,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "INT-02",
+      "expected": 5,
+      "found": 5,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "TML-01",
+      "expected": 20,
+      "found": 20,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "CON-01",
+      "expected": 10,
+      "found": 10,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "CON-02",
+      "expected": 25,
+      "found": 25,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "rule_id": "CON-03",
+      "expected": 8,
+      "found": 8,
+      "missed": [],
+      "false_positives": [],
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-09-01",
+      "rows": 1721,
+      "failed": 7,
+      "score": 99.59
+    },
+    {
+      "date": "2026-09-02",
+      "rows": 1658,
+      "failed": 2,
+      "score": 99.88
+    },
+    {
+      "date": "2026-09-03",
+      "rows": 1657,
+      "failed": 6,
+      "score": 99.64
+    },
+    {
+      "date": "2026-09-04",
+      "rows": 1693,
+      "failed": 6,
+      "score": 99.65
+    },
+    {
+      "date": "2026-09-05",
+      "rows": 1670,
+      "failed": 8,
+      "score": 99.52
+    },
+    {
+      "date": "2026-09-06",
+      "rows": 1729,
+      "failed": 8,
+      "score": 99.54
+    },
+    {
+      "date": "2026-09-07",
+      "rows": 1655,
+      "failed": 7,
+      "score": 99.58
+    },
+    {
+      "date": "2026-09-08",
+      "rows": 1659,
+      "failed": 4,
+      "score": 99.76
+    },
+    {
+      "date": "2026-09-09",
+      "rows": 1648,
+      "failed": 3,
+      "score": 99.82
+    },
+    {
+      "date": "2026-09-10",
+      "rows": 1707,
+      "failed": 12,
+      "score": 99.3
+    },
+    {
+      "date": "2026-09-11",
+      "rows": 1630,
+      "failed": 4,
+      "score": 99.75
+    },
+    {
+      "date": "2026-09-12",
+      "rows": 1694,
+      "failed": 6,
+      "score": 99.65
+    },
+    {
+      "date": "2026-09-13",
+      "rows": 1704,
+      "failed": 8,
+      "score": 99.53
+    },
+    {
+      "date": "2026-09-14",
+      "rows": 1716,
+      "failed": 6,
+      "score": 99.65
+    },
+    {
+      "date": "2026-09-15",
+      "rows": 1668,
+      "failed": 7,
+      "score": 99.58
+    },
+    {
+      "date": "2026-09-16",
+      "rows": 1645,
+      "failed": 4,
+      "score": 99.76
+    },
+    {
+      "date": "2026-09-17",
+      "rows": 1726,
+      "failed": 66,
+      "score": 96.18
+    },
+    {
+      "date": "2026-09-18",
+      "rows": 1694,
+      "failed": 11,
+      "score": 99.35
+    },
+    {
+      "date": "2026-09-19",
+      "rows": 1610,
+      "failed": 7,
+      "score": 99.57
+    },
+    {
+      "date": "2026-09-20",
+      "rows": 1680,
+      "failed": 7,
+      "score": 99.58
+    },
+    {
+      "date": "2026-09-21",
+      "rows": 1707,
+      "failed": 10,
+      "score": 99.41
+    },
+    {
+      "date": "2026-09-22",
+      "rows": 1592,
+      "failed": 6,
+      "score": 99.62
+    },
+    {
+      "date": "2026-09-23",
+      "rows": 1695,
+      "failed": 5,
+      "score": 99.71
+    },
+    {
+      "date": "2026-09-24",
+      "rows": 1683,
+      "failed": 10,
+      "score": 99.41
+    },
+    {
+      "date": "2026-09-25",
+      "rows": 1720,
+      "failed": 8,
+      "score": 99.53
+    },
+    {
+      "date": "2026-09-26",
+      "rows": 1616,
+      "failed": 8,
+      "score": 99.5
+    },
+    {
+      "date": "2026-09-27",
+      "rows": 1666,
+      "failed": 9,
+      "score": 99.46
+    },
+    {
+      "date": "2026-09-28",
+      "rows": 1673,
+      "failed": 7,
+      "score": 99.58
+    },
+    {
+      "date": "2026-09-29",
+      "rows": 1675,
+      "failed": 7,
+      "score": 99.58
+    },
+    {
+      "date": "2026-09-30",
+      "rows": 1674,
+      "failed": 6,
+      "score": 99.64
+    }
+  ],
+  "expectations": [
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "txn_id",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 50285,
+      "sample": []
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_be_unique",
+      "column": "txn_id",
+      "success": false,
+      "unexpected_count": 300,
+      "element_count": 50285,
+      "sample": [
+        "T00042777",
+        "T00032241",
+        "T00043108"
+      ]
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_match_regex",
+      "column": "account_id",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 50285,
+      "sample": []
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "currency",
+      "success": false,
+      "unexpected_count": 48,
+      "element_count": 50285,
+      "sample": [
+        "usd",
+        "usd",
+        "RS"
+      ]
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "currency",
+      "success": false,
+      "unexpected_count": 12,
+      "element_count": 50285,
+      "sample": [
+        "nan",
+        "nan",
+        "nan"
+      ]
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_be_between",
+      "column": "amount_num",
+      "success": false,
+      "unexpected_count": 30,
+      "element_count": 50285,
+      "sample": [
+        "0.0",
+        "-4991.59",
+        "0.0"
+      ]
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "direction",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 50285,
+      "sample": []
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "status",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 50285,
+      "sample": []
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "channel",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 50285,
+      "sample": []
+    },
+    {
+      "suite": "transactions",
+      "expectation": "expect_column_values_to_be_between",
+      "column": "txn_ts_utc",
+      "success": false,
+      "unexpected_count": 20,
+      "element_count": 50285,
+      "sample": [
+        "2026-10-10 13:30:00",
+        "2026-10-06 07:30:00",
+        "2026-10-10 00:30:00"
+      ]
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_be_unique",
+      "column": "customer_id",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 1000,
+      "sample": []
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "email",
+      "success": false,
+      "unexpected_count": 14,
+      "element_count": 1000,
+      "sample": [
+        "nan",
+        "nan",
+        "nan"
+      ]
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_match_regex",
+      "column": "email",
+      "success": false,
+      "unexpected_count": 25,
+      "element_count": 1000,
+      "sample": [
+        "zarna x@example.com",
+        "unni@",
+        "xavier x@example.com"
+      ]
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "phone",
+      "success": false,
+      "unexpected_count": 13,
+      "element_count": 1000,
+      "sample": [
+        "nan",
+        "nan",
+        "nan"
+      ]
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_match_regex",
+      "column": "phone",
+      "success": false,
+      "unexpected_count": 20,
+      "element_count": 1000,
+      "sample": [
+        "5987654321",
+        "5987654321",
+        "5987654321"
+      ]
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "kyc_status",
+      "success": false,
+      "unexpected_count": 13,
+      "element_count": 1000,
+      "sample": [
+        "nan",
+        "nan",
+        "nan"
+      ]
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "kyc_status",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 1000,
+      "sample": []
+    },
+    {
+      "suite": "customers",
+      "expectation": "expect_column_values_to_match_regex",
+      "column": "date_of_birth",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 1000,
+      "sample": []
+    },
+    {
+      "suite": "accounts",
+      "expectation": "expect_column_values_to_be_unique",
+      "column": "account_id",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 1366,
+      "sample": []
+    },
+    {
+      "suite": "accounts",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "account_type",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 1366,
+      "sample": []
+    },
+    {
+      "suite": "accounts",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "branch_code",
+      "success": false,
+      "unexpected_count": 5,
+      "element_count": 1366,
+      "sample": [
+        "ARYB9999",
+        "ARYB9999",
+        "ARYB9999"
+      ]
+    },
+    {
+      "suite": "accounts",
+      "expectation": "expect_column_values_to_be_in_set",
+      "column": "currency",
+      "success": true,
+      "unexpected_count": 0,
+      "element_count": 1366,
+      "sample": []
+    }
+  ],
+  "reconciliation": [
+    {
+      "check_id": "REC-01",
+      "name": "Every raw row is either loaded or quarantined",
+      "passed": true,
+      "expected": "50285 raw rows",
+      "actual": "50000 loaded + 285 quarantined = 50285",
+      "mismatches": []
+    },
+    {
+      "check_id": "REC-02",
+      "name": "Each valid transaction is loaded exactly once",
+      "passed": true,
+      "expected": "50000 valid transactions",
+      "actual": "0 missing, 0 unexpected, 0 duplicated",
+      "mismatches": []
+    },
+    {
+      "check_id": "REC-03",
+      "name": "Quarantine counts per reason match the quality rules",
+      "passed": true,
+      "expected": "DUPLICATE 150, INVALID_CURRENCY 60, NON_POSITIVE_AMOUNT 30, UNKNOWN_ACCOUNT 25, FUTURE_DATED 20",
+      "actual": "DUPLICATE 150, FUTURE_DATED 20, INVALID_CURRENCY 60, NON_POSITIVE_AMOUNT 30, UNKNOWN_ACCOUNT 25",
+      "mismatches": []
+    },
+    {
+      "check_id": "REC-04",
+      "name": "Daily control totals (count, credits, debits) match the source",
+      "passed": true,
+      "expected": "every day matches",
+      "actual": "0 of 30 report days differ",
+      "mismatches": []
+    },
+    {
+      "check_id": "REC-05",
+      "name": "Every branch-day row matches the source",
+      "passed": true,
+      "expected": "every branch-day matches",
+      "actual": "0 branch-day rows differ (report has 630)",
+      "mismatches": []
+    },
+    {
+      "check_id": "REC-06",
+      "name": "Computed closing balance per account matches the source ledger",
+      "passed": true,
+      "expected": "all accounts match",
+      "actual": "0 accounts differ",
+      "mismatches": []
+    },
+    {
+      "check_id": "REC-07",
+      "name": "Balance breaks in the report are exactly the known source breaks",
+      "passed": true,
+      "expected": "25 accounts (rule CON-02)",
+      "actual": "25 accounts flagged by report",
+      "mismatches": []
+    }
+  ],
+  "quarantine": {
+    "DUPLICATE": 150,
+    "FUTURE_DATED": 20,
+    "INVALID_CURRENCY": 60,
+    "NON_POSITIVE_AMOUNT": 30,
+    "UNKNOWN_ACCOUNT": 25
+  },
+  "report_rows": 630
+}

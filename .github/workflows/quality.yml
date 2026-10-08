@@ -1,0 +1,94 @@
+name: data-quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "47 21 * * *" # daily, 03:17 IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - run: pip install -e ".[test]"
+
+      - name: Generate synthetic Arya Bank extract
+        run: python -m arya_dq.generate
+
+      - name: Quality rules, Great Expectations, pipeline and reconciliation
+        run: python -m arya_dq.report
+
+      - name: Test suite + bug hunt (correct pipeline, then each planted bug)
+        id: hunt
+        run: |
+          if python scripts/bug_hunt.py --update-readme; then
+            echo "problems=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "problems=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build dashboard
+        if: always()
+        run: python scripts/build_site.py
+
+      - name: Keep reports
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: reports
+          path: |
+            reports/
+            work/*.log
+          retention-days: 14
+
+      - name: Upload dashboard
+        if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Commit refreshed results
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md reports/
+          git diff --cached --quiet || git commit -m "Refresh data quality results [skip ci]"
+          git push
+
+      - name: Fail if the correct pipeline failed or a bug escaped
+        if: steps.hunt.outputs.problems == 'true'
+        run: |
+          echo "::error::Tests failed on the correct pipeline, or a planted bug was not caught. See the job summary."
+          exit 1
+
+  deploy:
+    needs: quality
+    if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.quality.result != 'cancelled'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.pages.outputs.page_url }}
+    steps:
+      - id: pages
+        uses: actions/deploy-pages@v4

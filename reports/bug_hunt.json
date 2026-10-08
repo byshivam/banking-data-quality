@@ -1,0 +1,595 @@
+[
+  {
+    "run": "clean",
+    "bugs": "none",
+    "exit_code": 0,
+    "duration_s": 10.5,
+    "total": 68,
+    "passed": 68,
+    "failed": 0,
+    "failed_tests": [],
+    "failed_layers": [],
+    "verdict": "PASS"
+  },
+  {
+    "run": "PIPE-01",
+    "bugs": "PIPE-01",
+    "exit_code": 1,
+    "duration_s": 10.4,
+    "total": 68,
+    "passed": 61,
+    "failed": 7,
+    "failed_tests": [
+      {
+        "name": "test_duplicate_counted_once_and_quarantined",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert (2, Decimal('500.00')) == (1, Decimal('250.00'))\n  \n  At index 0 diff: 2 != 1\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[valid_rows_loaded_once]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 0 missing, 0 unexpected, 150 duplicated. [{'issue': 'duplicated', 'txn_id': 'T00034764', 'c"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[quarantine_matches_rules]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-03 Quarantine counts per reason match the quality rules: expected DUPLICATE 150, INVALID_CURRENCY 60, NON_POSITIVE_AMOUNT 30, UNKNOWN_ACCOUNT 25, FUTURE_DATED 20, got FUTURE_DATED "
+      },
+      {
+        "name": "test_dirty_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 30 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 141 branch-day rows differ (report has 630). [{'report_date': '2026-09-01', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 142 accounts differ. [{'account_id': 'ACC-000002', 'expected_closing': '320969.4"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 25 accounts (rule CON-02), got 165 accounts flagged by report. [{'account_id': 'ACC-000002', 'issue': "
+      }
+    ],
+    "failed_layers": [
+      "Unit",
+      "Reconciliation"
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "PIPE-02",
+    "bugs": "PIPE-02",
+    "exit_code": 1,
+    "duration_s": 9.9,
+    "total": 68,
+    "passed": 59,
+    "failed": 9,
+    "failed_tests": [
+      {
+        "name": "test_fx_uses_the_rate_of_the_transaction_date",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: 100 USD on 5 Sep at 88.0000\nassert Decimal('9000.00') == Decimal('8800.00')\n +  where Decimal('8800.00') = Decimal('8800.00')"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 29 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 520 branch-day rows differ (report has 630). [{'report_date': '2026-09-01', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 858 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943.3"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 25 accounts (rule CON-02), got 867 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue': "
+      },
+      {
+        "name": "test_clean_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 29 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_clean_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 515 branch-day rows differ (report has 600). [{'report_date': '2026-09-01', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_clean_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 858 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943.3"
+      },
+      {
+        "name": "test_clean_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 0 accounts (rule CON-02), got 858 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue': '"
+      }
+    ],
+    "failed_layers": [
+      "Unit",
+      "Reconciliation"
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "PIPE-03",
+    "bugs": "PIPE-03",
+    "exit_code": 1,
+    "duration_s": 9.8,
+    "total": 68,
+    "passed": 59,
+    "failed": 9,
+    "failed_tests": [
+      {
+        "name": "test_report_day_is_ist_not_utc",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert [('2026-09-10...imal('0.00'))] == [('2026-09-11...imal('0.00'))]\n  \n  At index 0 diff: ('2026-09-10', 'ARYB0001', 1, Decimal('500.00'), Decimal('0.00')) != ('2026-09-11', 'ARYB0"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 31 of 31 report days differ. [{'report_date': '2026-08-31', 'expected_count': Non"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 649 branch-day rows differ (report has 651). [{'report_date': '2026-08-31', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 289 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943.3"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 25 accounts (rule CON-02), got 309 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue': "
+      },
+      {
+        "name": "test_clean_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 31 of 31 report days differ. [{'report_date': '2026-08-31', 'expected_count': Non"
+      },
+      {
+        "name": "test_clean_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 620 branch-day rows differ (report has 620). [{'report_date': '2026-08-31', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_clean_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 289 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943.3"
+      },
+      {
+        "name": "test_clean_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 0 accounts (rule CON-02), got 289 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue': '"
+      }
+    ],
+    "failed_layers": [
+      "Unit",
+      "Reconciliation"
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "PIPE-04",
+    "bugs": "PIPE-04",
+    "exit_code": 1,
+    "duration_s": 10.1,
+    "total": 68,
+    "passed": 61,
+    "failed": 7,
+    "failed_tests": [
+      {
+        "name": "test_unknown_branch_is_kept_not_dropped",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert [] == [('2026-09-05...imal('0.00'))]\n  \n  Right contains one more item: ('2026-09-05', 'ARYB9999', 1, Decimal('300.00'), Decimal('0.00'))\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[row_accounting]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-01 Every raw row is either loaded or quarantined: expected 50285 raw rows, got 49811 loaded + 285 quarantined = 50096. []\nassert False\n +  where False = Check(check_id='REC-01', na"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[valid_rows_loaded_once]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 0 duplicated. [{'issue': 'missing', 'txn_id': 'T00034995'}, {'is"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 30 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 30 branch-day rows differ (report has 600). [{'report_date': '2026-09-01', 'branch_code': 'ARYB99"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 5 accounts differ. [{'account_id': 'ACC-000004', 'expected_closing': '30008.22',"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 25 accounts (rule CON-02), got 30 accounts flagged by report. [{'account_id': 'ACC-000004', 'issue': '"
+      }
+    ],
+    "failed_layers": [
+      "Unit",
+      "Reconciliation"
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "PIPE-05",
+    "bugs": "PIPE-05",
+    "exit_code": 1,
+    "duration_s": 10.1,
+    "total": 68,
+    "passed": 59,
+    "failed": 9,
+    "failed_tests": [
+      {
+        "name": "test_failed_and_reversed_payments_are_not_money",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert (3, Decimal('1700.00')) == (1, Decimal('100.00'))\n  \n  At index 0 diff: 3 != 1\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 30 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 608 branch-day rows differ (report has 630). [{'report_date': '2026-09-01', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 1225 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943."
+      },
+      {
+        "name": "test_dirty_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 25 accounts (rule CON-02), got 1226 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue':"
+      },
+      {
+        "name": "test_clean_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 30 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_clean_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 596 branch-day rows differ (report has 600). [{'report_date': '2026-09-01', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_clean_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 1225 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943."
+      },
+      {
+        "name": "test_clean_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 0 accounts (rule CON-02), got 1225 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue': "
+      }
+    ],
+    "failed_layers": [
+      "Unit",
+      "Reconciliation"
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "PIPE-06",
+    "bugs": "PIPE-06",
+    "exit_code": 1,
+    "duration_s": 10.0,
+    "total": 68,
+    "passed": 59,
+    "failed": 9,
+    "failed_tests": [
+      {
+        "name": "test_paise_are_kept",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert (Decimal('100...cimal('0.00')) == (Decimal('100...cimal('0.99'))\n  \n  At index 0 diff: Decimal('100.00') != Decimal('100.75')\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 30 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 630 branch-day rows differ (report has 630). [{'report_date': '2026-09-01', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 1364 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943."
+      },
+      {
+        "name": "test_dirty_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 25 accounts (rule CON-02), got 1364 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue':"
+      },
+      {
+        "name": "test_clean_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 30 of 30 report days differ. [{'report_date': '2026-09-01', 'expected_count': '16"
+      },
+      {
+        "name": "test_clean_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 600 branch-day rows differ (report has 600). [{'report_date': '2026-09-01', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_clean_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 1364 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943."
+      },
+      {
+        "name": "test_clean_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 0 accounts (rule CON-02), got 1364 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue': "
+      }
+    ],
+    "failed_layers": [
+      "Unit",
+      "Reconciliation"
+    ],
+    "verdict": "CAUGHT"
+  },
+  {
+    "run": "all",
+    "bugs": "all",
+    "exit_code": 1,
+    "duration_s": 10.2,
+    "total": 68,
+    "passed": 51,
+    "failed": 17,
+    "failed_tests": [
+      {
+        "name": "test_report_day_is_ist_not_utc",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert [('2026-09-10...imal('0.00'))] == [('2026-09-11...imal('0.00'))]\n  \n  At index 0 diff: ('2026-09-10', 'ARYB0001', 1, Decimal('500.00'), Decimal('0.00')) != ('2026-09-11', 'ARYB0"
+      },
+      {
+        "name": "test_fx_uses_the_rate_of_the_transaction_date",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: 100 USD on 5 Sep at 88.0000\nassert Decimal('9000.00') == Decimal('8800.00')\n +  where Decimal('8800.00') = Decimal('8800.00')"
+      },
+      {
+        "name": "test_duplicate_counted_once_and_quarantined",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert (2, Decimal('500.00')) == (1, Decimal('250.00'))\n  \n  At index 0 diff: 2 != 1\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_failed_and_reversed_payments_are_not_money",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert (3, Decimal('1700.00')) == (1, Decimal('100.00'))\n  \n  At index 0 diff: 3 != 1\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_paise_are_kept",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert (Decimal('100...cimal('0.00')) == (Decimal('100...cimal('0.99'))\n  \n  At index 0 diff: Decimal('100.00') != Decimal('100.75')\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_unknown_branch_is_kept_not_dropped",
+        "module": "test_pipeline_units",
+        "layer": "Unit",
+        "status": "failed",
+        "message": "AssertionError: assert [] == [('2026-09-05...imal('0.00'))]\n  \n  Right contains one more item: ('2026-09-05', 'ARYB9999', 1, Decimal('300.00'), Decimal('0.00'))\n  Use -v to get more diff"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[row_accounting]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-01 Every raw row is either loaded or quarantined: expected 50285 raw rows, got 49958 loaded + 135 quarantined = 50093. []\nassert False\n +  where False = Check(check_id='REC-01', na"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[valid_rows_loaded_once]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 147 duplicated. [{'issue': 'missing', 'txn_id': 'T00034995'}, {'"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[quarantine_matches_rules]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-03 Quarantine counts per reason match the quality rules: expected DUPLICATE 150, INVALID_CURRENCY 60, NON_POSITIVE_AMOUNT 30, UNKNOWN_ACCOUNT 25, FUTURE_DATED 20, got FUTURE_DATED "
+      },
+      {
+        "name": "test_dirty_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 31 of 31 report days differ. [{'report_date': '2026-08-31', 'expected_count': Non"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 650 branch-day rows differ (report has 620). [{'report_date': '2026-08-31', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_dirty_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 1366 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943."
+      },
+      {
+        "name": "test_dirty_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 25 accounts (rule CON-02), got 1366 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue':"
+      },
+      {
+        "name": "test_clean_extract_reconciles[daily_control_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-04 Daily control totals (count, credits, debits) match the source: expected every day matches, got 31 of 31 report days differ. [{'report_date': '2026-08-31', 'expected_count': Non"
+      },
+      {
+        "name": "test_clean_extract_reconciles[branch_totals]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-05 Every branch-day row matches the source: expected every branch-day matches, got 620 branch-day rows differ (report has 620). [{'report_date': '2026-08-31', 'branch_code': 'ARYB0"
+      },
+      {
+        "name": "test_clean_extract_reconciles[account_balances]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-06 Computed closing balance per account matches the source ledger: expected all accounts match, got 1366 accounts differ. [{'account_id': 'ACC-000001', 'expected_closing': '194943."
+      },
+      {
+        "name": "test_clean_extract_reconciles[balance_breaks]",
+        "module": "test_reconciliation",
+        "layer": "Reconciliation",
+        "status": "failed",
+        "message": "AssertionError: REC-07 Balance breaks in the report are exactly the known source breaks: expected 0 accounts (rule CON-02), got 1366 accounts flagged by report. [{'account_id': 'ACC-000001', 'issue': "
+      }
+    ],
+    "failed_layers": [
+      "Unit",
+      "Reconciliation"
+    ],
+    "verdict": "CAUGHT"
+  }
+]
