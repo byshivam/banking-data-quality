@@ -3,7 +3,7 @@
     "run": "clean",
     "bugs": "none",
     "exit_code": 0,
-    "duration_s": 9.0,
+    "duration_s": 9.1,
     "total": 68,
     "passed": 68,
     "failed": 0,
@@ -15,7 +15,7 @@
     "run": "PIPE-01",
     "bugs": "PIPE-01",
     "exit_code": 1,
-    "duration_s": 8.7,
+    "duration_s": 8.8,
     "total": 68,
     "passed": 61,
     "failed": 7,
@@ -32,7 +32,7 @@
         "module": "test_reconciliation",
         "layer": "Reconciliation",
         "status": "failed",
-        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 0 missing, 0 unexpected, 150 duplicated. [{'issue': 'duplicated', 'txn_id': 'T00047717', 'c"
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 0 missing, 0 unexpected, 150 duplicated. [{'issue': 'duplicated', 'txn_id': 'T00044862', 'c"
       },
       {
         "name": "test_dirty_extract_reconciles[quarantine_matches_rules]",
@@ -80,7 +80,7 @@
     "run": "PIPE-02",
     "bugs": "PIPE-02",
     "exit_code": 1,
-    "duration_s": 8.7,
+    "duration_s": 8.8,
     "total": 68,
     "passed": 59,
     "failed": 9,
@@ -238,7 +238,7 @@
     "run": "PIPE-04",
     "bugs": "PIPE-04",
     "exit_code": 1,
-    "duration_s": 8.7,
+    "duration_s": 8.9,
     "total": 68,
     "passed": 61,
     "failed": 7,
@@ -262,7 +262,7 @@
         "module": "test_reconciliation",
         "layer": "Reconciliation",
         "status": "failed",
-        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 0 duplicated. [{'issue': 'missing', 'txn_id': 'T00047856'}, {'is"
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 0 duplicated. [{'issue': 'missing', 'txn_id': 'T00016461'}, {'is"
       },
       {
         "name": "test_dirty_extract_reconciles[daily_control_totals]",
@@ -303,7 +303,7 @@
     "run": "PIPE-05",
     "bugs": "PIPE-05",
     "exit_code": 1,
-    "duration_s": 8.7,
+    "duration_s": 8.9,
     "total": 68,
     "passed": 59,
     "failed": 9,
@@ -382,7 +382,7 @@
     "run": "PIPE-06",
     "bugs": "PIPE-06",
     "exit_code": 1,
-    "duration_s": 8.8,
+    "duration_s": 8.9,
     "total": 68,
     "passed": 59,
     "failed": 9,
@@ -520,7 +520,7 @@
         "module": "test_reconciliation",
         "layer": "Reconciliation",
         "status": "failed",
-        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 147 duplicated. [{'issue': 'missing', 'txn_id': 'T00044413'}, {'"
+        "message": "AssertionError: REC-02 Each valid transaction is loaded exactly once: expected 50000 valid transactions, got 189 missing, 0 unexpected, 147 duplicated. [{'issue': 'missing', 'txn_id': 'T00039831'}, {'"
       },
       {
         "name": "test_dirty_extract_reconciles[quarantine_matches_rules]",
