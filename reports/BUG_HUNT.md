@@ -1,6 +1,6 @@
 # Results
 
-_Last run: 22 Oct 2026 00:17 UTC_
+_Last run: 23 Oct 2026 00:13 UTC_
 
 **Data quality score:** 98.86 / 100 (worst day 2026-09-17: 96.18).  
 **Quality rules:** 12/12 flag exactly the injected defects (no misses, no false positives).  
