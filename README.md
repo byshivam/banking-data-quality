@@ -18,7 +18,7 @@ Same fictional bank as [payments-api-testing](https://github.com/byshivam/paymen
 ## Results
 
 <!-- RESULTS:START -->
-_Last run: 26 Nov 2026 03:48 UTC_
+_Last run: 27 Nov 2026 03:50 UTC_
 
 **Data quality score:** 98.86 / 100 (worst day 2026-09-17: 96.18).  
 **Quality rules:** 12/12 flag exactly the injected defects (no misses, no false positives).  
